@@ -87,8 +87,14 @@ for filename in os.listdir(path):
                 invoice_unit_measure = dictionary['S_QTY']['C_C186']['D_6411']
 
             # Invoice line net amount
-            if (dictionary['G_SG27']['S_MOA']['C_C516']['D_5025'] == '203'):
-                Invoice_line_net_amount = dictionary['G_SG27']['S_MOA']['C_C516']['D_5004']
+           # if (dictionary['G_SG27']['S_MOA']['C_C516']['D_5025'] == '203'):
+           #     Invoice_line_net_amount = dictionary['G_SG27']['S_MOA']['C_C516']['D_5004']
+        
+    		  if len(dictionary['G_SG27']) > 1:
+                for key in dictionary['G_SG27']:
+                   if (key['S_MOA']['C_C516']['D_5025'] == '203'):
+                      Invoice_line_net_amount = key['S_MOA']['C_C516']['D_5004']
+    
         
             # Invoice line Buyer accounting reference	
             if (dictionary['G_SG30']['S_RFF']['C_C506']['D_1153'] == 'AVE'): #AWQ
